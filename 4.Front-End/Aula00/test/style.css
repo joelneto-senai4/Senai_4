@@ -1,0 +1,62 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: coral;
+    padding: 0 15px;
+    border-bottom: solid 1px black;
+    margin-bottom: 10px;
+}
+
+main {
+    height: 100%;
+
+}
+
+.painel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    background-color: teal;
+    padding: 15px;
+    margin: 0 20%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: burlywood;
+    height: calc(100% - 8.2%);
+    margin: 0 20px;
+}
+
+footer {
+    display: flex;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0 15px;
+    margin-top: 10px;
+    height: 50px;
+}

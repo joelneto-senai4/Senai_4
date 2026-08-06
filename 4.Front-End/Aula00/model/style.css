@@ -1,0 +1,390 @@
+/* :root : variáveis globais de style */
+/** DIDÁTICO: `:root` é o elemento "raiz" do documento (equivale ao `<html>`,
+ * mas com prioridade maior no CSS). Variáveis declaradas aqui com `--nome`
+ * ficam disponíveis em QUALQUER seletor do arquivo, via `var(--nome)`.
+ * É a base de um "design system": se quiser mudar a cor principal do site
+ * inteiro, muda em UM lugar só, aqui embaixo, em vez de caçar cada seletor. */
+:root {
+  --cor-fundo: #ffffff;
+  --cor-fundo-card: #fafafa;
+  --cor-primaria: #1a1a1a;
+  --cor-texto: #1a1a1a;
+  --cor-texto-suave: #6b6b6b;
+  --cor-borda: #d4d4d4;
+  --cor-alerta: #c0392b;
+  --cor-alerta-fundo: #fbeaea;
+  --cor-online: #2e7d32;
+  --raio-borda: 10px;
+  --espacamento: 1rem;
+}
+
+/** DIDÁTICO: `*` é o "seletor universal" — aplica a regra a TODO elemento da
+ * página. `box-sizing: border-box` muda a forma como o navegador calcula
+ * largura/altura: com ele, `padding` e `border` passam a ser CONTADOS DENTRO
+ * da largura definida (em vez de somados a ela). Isso evita a dor de cabeça
+ * clássica de elementos "estourando" o layout ao adicionar padding.
+ * Zerar `margin`/`padding` remove os espaçamentos padrão que cada navegador
+ * aplica de formas diferentes, nos dando um ponto de partida "limpo" e igual
+ * em qualquer navegador (uma mini reset CSS). */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+
+  /* GRID : estrutura macro */
+  /** DIDÁTICO: Aqui é o Grid "macro" pedido no PDF. `display: grid` transforma
+   * o `<body>` num container Grid. `grid-template-rows: auto 1fr auto` cria
+   * 3 LINHAS: a primeira (header) e a última (footer) ocupam só o espaço que
+   * o conteúdo precisar (`auto`), e a do MEIO (main) consome todo o espaço
+   * restante disponível (`1fr` = "1 fração livre"). É assim que garantimos
+   * que o footer sempre fique "grudado" embaixo, mesmo com pouco conteúdo. */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+/** DIDÁTICO: Repare que aqui dentro usamos `display: flex`, não Grid. Isso é
+ * comum: usa-se Grid pra organizar as GRANDES áreas da página (macro-layout)
+ * e Flexbox pra alinhar os itens MENORES dentro de cada área (micro-layout).
+ * `flex-wrap: wrap` permite que os itens (logo, título, status) quebrem pra
+ * uma nova linha se a tela for estreita demais pra caber tudo lado a lado. */
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  background-color: var(--cor-fundo-card);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: var(--cor-primaria);
+}
+
+/** DIDÁTICO: `flex: 1` diz "cresça pra ocupar todo o espaço restante nessa
+ * linha flex". Como o `.logo` e o `.status` têm tamanho fixo (definido pelo
+ * próprio conteúdo), o `.titulo` "puxa" todo o espaço do meio, empurrando o
+ * indicador de status pra ponta direita do header. */
+.titulo {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+  flex: 1;
+}
+
+.status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.status--online {
+  background-color: #e8f5e9;
+  color: var(--cor-online);
+}
+
+.status--offline {
+  background-color: var(--cor-alerta-fundo);
+  color: var(--cor-alerta);
+}
+
+/* ---------- MAIN ---------- */
+main {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Filtros e Controles */
+.secao-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.secao-filtros button {
+  cursor: pointer;
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: var(--raio-borda);
+  transition: opacity 0.2s ease;
+}
+
+/** DIDÁTICO: `:hover` é uma "pseudo-classe" — aplica o estilo só enquanto o
+ * mouse está sobre o elemento. `transition: opacity 0.2s ease` (definida lá
+ * em cima, no seletor normal do botão) é o que faz essa mudança de opacidade
+ * acontecer suavemente ao longo de 0.2s, em vez de trocar instantaneamente. */
+.secao-filtros button:hover {
+  opacity: 0.8;
+}
+
+.secao-filtros select {
+  padding: 0.5rem;
+  border-radius: var(--raio-borda);
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+/* Grid de Sensores */
+/** DIDÁTICO: Esse é o segundo uso de Grid pedido no PDF — a distribuição dos
+ * CARDS na tela. `repeat(3, 1fr)` é um atalho pra "3 colunas de largura
+ * igual" (equivale a escrever `1fr 1fr 1fr`). Sem precisar calcular
+ * porcentagens manualmente, o Grid garante que as 3 colunas dividam o
+ * espaço disponível de forma exatamente proporcional. */
+.secao-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacamento);
+}
+
+/** DIDÁTICO: Isso é uma "media query" — uma regra condicional do CSS que só
+ * se aplica quando a tela obedece a um critério (aqui, `max-width: 768px`,
+ * ou seja, telas com até 768px de largura, tipicamente celulares/tablets
+ * pequenos). É o mecanismo por trás do "responsivo" pedido no PDF: o MESMO
+ * elemento `.secao-grid` muda de comportamento dependendo do tamanho da tela,
+ * sem precisar de JavaScript nenhum pra isso. */
+@media (max-width: 768px) {
+  .secao-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- CARD DE SENSOR ---------- */
+/** DIDÁTICO: Aqui começa o Flexbox "interno" do card, pedido no PDF.
+ * `flex-direction: column` empilha os filhos (ícone, nome, valor, rodapé)
+ * de cima pra baixo, em vez do padrão do Flexbox que é lado a lado (`row`).
+ * `gap` cria um espaçamento uniforme ENTRE os filhos, sem precisar de
+ * margin manual em cada um (evitando o problema de "margin duplicada"
+ * entre elementos vizinhos). */
+.card-sensor {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 1rem;
+
+  /* Flexbox : componentes internos */
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/** DIDÁTICO: `justify-content: space-between` empurra o primeiro filho pra
+ * ponta esquerda e o último pra ponta direita, distribuindo o espaço vazio
+ * ENTRE eles (não nas bordas externas). É assim que o ícone fica à esquerda
+ * e o tipo do sensor fica à direita, sem precisar calcular posições manualmente. */
+.card-sensor__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/** DIDÁTICO: Os ícones do Google (Material Symbols) são, na prática, uma FONTE
+ * de texto especial — cada "palavra" (ex: "thermostat") é renderizada como um
+ * símbolo gráfico em vez de letras, graças a essa fonte importada no HTML.
+ * `font-variation-settings` ajusta variações da fonte (preenchimento, peso,
+ * grade e tamanho ótico) sem precisar carregar arquivos de fonte diferentes. */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.card-sensor__icone {
+  font-size: 1.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.card-sensor__tipo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-sensor__nome {
+  font-weight: bold;
+}
+
+.card-sensor__valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+.card-sensor__rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-sensor__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--cor-online);
+}
+
+.card-sensor__estado .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.card-sensor__historico {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--raio-borda);
+  font-size: 0.8rem;
+}
+
+.card-sensor__historico:hover {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+
+.botao--desabilitado {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 50;
+}
+
+.modal-overlay.modal--ativo {
+  display: flex;
+}
+
+.modal-card {
+  background-color: #ffffff;
+  border-radius: var(--raio-borda);
+  width: min(480px, 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.modal-card__cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.modal-card__cabecalho h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.modal-card__fechar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+}
+
+.modal-card__conteudo {
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.modal-card__lista {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-card__item {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 0.85rem;
+}
+
+.modal-card__item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.modal-card__item time {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+/* Classes : sensores (Estados Visuais) */
+/** DIDÁTICO: Esse é o coração dos "Estados Visuais" pedidos no PDF. A classe
+ * `.card-alerta` NÃO existe no HTML original — ela é adicionada dinamicamente
+ * pelo JavaScript (em `renderizarDashboard`, lá no script.js) só quando o
+ * sensor está crítico. O CSS não sabe (nem precisa saber) o motivo do alerta;
+ * ele só reage à presença da classe no elemento. Essa separação — JS decide
+ * O QUE aplicar, CSS decide COMO fica visualmente — é uma boa prática comum
+ * em várias tecnologias front-end (inclusive frameworks como React/Vue). */
+.card-alerta {
+  border-color: var(--cor-alerta);
+  background-color: var(--cor-alerta-fundo);
+}
+
+/** DIDÁTICO: `.card-alerta .card-sensor__valor` é um seletor "descendente"
+ * (dois seletores separados por espaço): ele só afeta um `.card-sensor__valor`
+ * que esteja DENTRO de um elemento com a classe `.card-alerta`. Ou seja,
+ * cards normais mantêm o valor na cor padrão; só os críticos ficam vermelhos. */
+.card-alerta .card-sensor__valor {
+  color: var(--cor-alerta);
+}
+
+.card-alerta .card-sensor__icone {
+  color: var(--cor-alerta);
+}
+
+.card-alerta .card-sensor__estado {
+  color: var(--cor-alerta);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding: 1rem 2rem;
+  background-color: var(--cor-primaria);
+  border-top: 1px solid var(--cor-borda);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--cor-fundo);
+}

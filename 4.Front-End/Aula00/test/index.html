@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <!-- <h1>LOGO</h1> -->
+    <h1>Dashboard de Sensores</h1>
+    <span>(online/offline)</span>
+  </header>
+
+  <main>
+    <!-- <h3>Filtros e Controles</h3> -->
+    <section class="painel">
+      <div>
+        <input type="button" id="update" value="Atualizar">
+      </div>
+      <div>
+        <label>Filtro:</label>
+        <select id="tipo">
+          <option value="todos" selected>Todos</option>
+          <option value="temperatura">Temperatura</option>
+          <option value="umidade">Umidade</option>
+          <option value="pressao">Pressão</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="view">
+      <h3>Grid de Sensores</h3>
+      <div class="card">
+        <!-- Cards dinâmicos por JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p> 2026 &copy; Todos os direitos reservados</p>
+    <span>$timestamp</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

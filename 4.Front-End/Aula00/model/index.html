@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <title>Dashboard de Sensores</title>
+</head>
+
+<body>
+  <header>
+    <h1 class="logo">SensorHub</h1>
+    <h2 class="titulo">Dashboard de Monitoramento</h2>
+    <button id="status-conexao" class="status status--online" type="button">Online</button>
+  </header>
+
+  <main>
+    <section class="secao-filtros">
+      <button id="btn-atualizar" type="button">Atualizar dados</button>
+
+      <label for="filtro-tipo">Filtrar por tipo:</label>
+      <select id="filtro-tipo">
+        <option value="Todos">Todos</option>
+        <option value="Temperatura">Temperatura</option>
+        <option value="Umidade">Umidade</option>
+        <option value="Pressão">Pressão</option>
+      </select>
+    </section>
+
+    <section id="grid-sensores" class="secao-grid">
+      <!-- Cards renderizados dinamicamente via JS -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 SensorHub. Todos os direitos reservados.</p>
+    <p>Última atualização: <span id="ultimo-timestamp">--:--:--</span></p>
+  </footer>
+
+  <div id="modal-historico" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-card__cabecalho">
+        <h3 id="titulo-historico">Histórico do Sensor</h3>
+        <button id="btn-fechar-modal" class="modal-card__fechar" type="button" aria-label="Fechar histórico">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-card__conteudo">
+        <ul id="lista-historico" class="modal-card__lista"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
