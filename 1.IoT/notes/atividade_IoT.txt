@@ -1,0 +1,95 @@
+Atividade IoT
+
+1) Relacione os seguintes resistores com seus valores.
+
+a) marrom, preto, amarelo, dourado  
+b) verde, laranja, marrom, prata
+c) cinza, vermelho, vermelho, vermelho
+d) branco, marrom, laranja, prata
+e) marrom, verde, verde, marrom
+f) violeta, vermelho, marrom, dourado
+g) branco, preto, dourado, prata
+h) marrom, preto, preto, vermelho
+i) violeta, violeta, violeta, preto, dourado
+j) azul, violeta, preto, dourado, prata
+k) azul, violeta, preto, prata, prata
+l) cinza, vermelho, vermelho, dourado, prata
+
+>>>
+
+A) 100k Ω 	± 5%
+B) 530 Ω 	± 10%
+C) 8.200 Ω 	± 2%
+D) 91.000 Ω 	± 10%
+E) 1,5m Ω 	± 1%
+F) 720 Ω 	± 5%
+______________________
+
+G) 9 Ω 		± 10%
+H) 10 Ω 	± 2%
+I) 777 Ω 	± 5%
+J) 67 Ω 	± 10%
+K) 6,7 Ω 	± 10%
+L) 8,22 Ω 	± 10%
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Associação de resistores
+
+Na eletricidade, pode-se ligar diferentes resistores em basicamente 3 padrões. São elas as ligações em: Série, Paralelo e Misto.
+
+Para cada tipo, há um jeito diferente de calcular a resistência equivalente dessas associações.
+
+___________________________________________
+
+Série:
+
+Nesse tipo de ligação os resistores são ligados com a saída de um deles na entrada do próximo, formando uma sequência de um em Série do outro, exemplo:
+Sua resistência equivalente se dá pela soma de todos os resistores.
+No diagrama acima, caso R1=680Ω, R2=2,2KΩ e R3=120Ω, sua resistência equivalente se daria pela soma: R1 + R2 + R3 --> 680 + 2200 + 120 = 3KΩ.
+
+--[ ]--+--[ ]--+--[ ]--
+
+___________________________________________
+
+
+Paralelo:
+
+Na ligação em paralelo, os resistores são ligados conectando todas as entradas entre si e todas as saídas também. Exemplo:
+
+        |
+-----------------
+ |      |      |
+[ ]    [ ]    [ ]
+ |      |      |
+-----------------
+        |
+
+Sua resistência equivalente se dá pela verificação de em qual regra o circuito se aplica.
+1°Regra: Todos os resistores tem o mesmo valor de resistência
+
+-> Nesse caso basta utilizar o valor em comum dos resistores, e dividir pela quantidade de resistores. como exemplo do diagrama acima, caso a resistência de R1, R2 e R3 fosse de 3KΩ, sua resistência total seria de 3000 / quantidade --> 3000 / 3 -->1KΩ
+
+2°Regra: circuito tem somente 2 resistores, mas com valores diferentes
+
+-> Nesse caso, basta dividir a multiplicação de 2 resistores pela soma dos mesmos. Em um exemplo aonde R1=20Ω e R2=30Ω, sua resistência equivalente se daria por
+R1 * R2 / R1 + R2  -->  (20*30)/(20+30) = 600/50 --> 12Ω
+
+3°Regra: circuitos com mais de 2 resistores, e valores diferentes.
+
+-> Nesse último caso, aplicamos a seguinte fórmula:
+1 / (1/R1) + (1/R2) + (1/R3) ... (1/RN) --> Sendo N = o número total de resistores. 
+
+___________________________________________
+
+Misto:
+
+No circuito misto, temos a junção do série e paralelo. Para calcular sua resistência equivalente, basta separar em blocos, analizando cada associação se encaixar e resolver cada um separadamente.
+Exemplo:
+
+--[ ]--+--[ ]--+--[ ]--
+       |       |
+       ---[ ]---
+
