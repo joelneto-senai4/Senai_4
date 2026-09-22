@@ -1,0 +1,9 @@
+.hero-panel {
+	height: 100%;
+	padding: 20px;
+	display: grid;
+	place-items: center;
+	border: 2px solid #444;
+	background: #e7e7e7;
+	font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+}

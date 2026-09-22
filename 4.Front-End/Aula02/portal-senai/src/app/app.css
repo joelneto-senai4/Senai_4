@@ -1,0 +1,96 @@
+.page-shell {
+	box-sizing: border-box;
+	width: calc(100% - 32px);
+	height: 100vh;
+	height: 100dvh;
+	min-height: 0;
+	max-height: 100vh;
+	max-height: 100dvh;
+	margin: 0 auto;
+	padding: 16px 0;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: var(--header-size, auto) 10px minmax(0, 1fr) 10px var(--footer-size, auto);
+	gap: 10px;
+}
+
+.content-layout {
+	min-height: 0;
+	display: grid;
+	grid-template-columns: var(--sidebar-size, clamp(150px, 25%, 190px)) 10px minmax(0, 1fr);
+	gap: 10px;
+	align-items: stretch;
+}
+
+.content-column {
+	min-width: 0;
+	display: grid;
+	grid-template-rows: var(--hero-size, minmax(150px, 1.35fr)) 10px minmax(140px, 1fr);
+	gap: 10px;
+}
+
+.resize-handle {
+	position: relative;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	color: #1769e0;
+	font-size: 0;
+	user-select: none;
+	touch-action: none;
+}
+
+.resize-handle::before {
+	content: '';
+	display: block;
+	width: 26px;
+	height: 6px;
+	background: radial-gradient(circle, currentColor 2px, transparent 2.5px) 0 50% / 9px 6px repeat-x;
+}
+
+.resize-handle-horizontal {
+	cursor: row-resize;
+}
+
+.resize-handle-vertical {
+	cursor: col-resize;
+}
+
+.resize-handle-vertical::before {
+	width: 6px;
+	height: 26px;
+	background: radial-gradient(circle, currentColor 2px, transparent 2.5px) 50% 0 / 6px 9px repeat-y;
+}
+
+.resize-handle:hover {
+	color: #0b57d0;
+	background: rgba(23, 105, 224, 0.08);
+}
+
+app-sidebar,
+app-hero-banner,
+app-card-product,
+app-header,
+app-footer {
+	display: block;
+	min-height: 0;
+}
+
+@media (max-width: 640px) {
+	.page-shell {
+		width: min(100% - 20px, 1100px);
+		padding: 10px 0;
+	}
+
+	.content-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.resize-handle-vertical {
+		display: none;
+	}
+
+	.content-column {
+		grid-template-rows: var(--hero-size, minmax(150px, 1fr)) 10px minmax(140px, auto);
+	}
+}

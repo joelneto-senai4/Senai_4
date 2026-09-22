@@ -1,0 +1,18 @@
+<div class="page-shell">
+  <app-header></app-header>
+  <div class="resize-handle resize-handle-horizontal" role="separator" aria-label="Ajustar altura do cabeçalho" data-resize="header" (pointerdown)="startResize($event)">...</div>
+
+  <div class="content-layout">
+    <app-sidebar></app-sidebar>
+    <div class="resize-handle resize-handle-vertical" role="separator" aria-label="Ajustar largura do menu" data-resize="sidebar" (pointerdown)="startResize($event)">...</div>
+
+    <div class="content-column">
+      <app-hero-banner></app-hero-banner>
+      <div class="resize-handle resize-handle-horizontal" role="separator" aria-label="Ajustar altura do banner" data-resize="hero" (pointerdown)="startResize($event)">...</div>
+      <app-card-product></app-card-product>
+    </div>
+  </div>
+
+  <div class="resize-handle resize-handle-horizontal" role="separator" aria-label="Ajustar altura dos produtos" data-resize="footer" (pointerdown)="startResize($event)">...</div>
+  <app-footer></app-footer>
+</div>

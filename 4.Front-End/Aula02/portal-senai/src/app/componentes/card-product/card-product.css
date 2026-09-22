@@ -1,0 +1,35 @@
+.products-panel {
+	box-sizing: border-box;
+	height: 100%;
+	padding: 8px;
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr);
+	border: 2px solid #444;
+	background: #e7e7e7;
+}
+
+.panel-title {
+	margin-bottom: 6px;
+	text-align: center;
+	font-size: 1.1rem;
+}
+
+.product-list {
+	min-height: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+	grid-template-rows: minmax(0, 1fr);
+	gap: 10px;
+}
+
+.product-card {
+	box-sizing: border-box;
+	height: 100%;
+	padding: 12px;
+	display: grid;
+	place-items: center;
+	border: 2px solid #555;
+	background: #ededed;
+	font-size: 1.05rem;
+}
+
