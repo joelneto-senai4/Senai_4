@@ -1,0 +1,15 @@
+.subpage { display: grid; gap: 26px; padding: 8px 4px 12px; }
+.subpage-heading { max-width: 760px; }
+.subpage-heading h1 { margin: 8px 0 12px; color: #171717; font-size: clamp(32px, 4vw, 46px); line-height: 1.03; letter-spacing: -.04em; }
+.subpage-heading p { max-width: 640px; margin: 0; color: #666; font-size: 17px; line-height: 1.6; }
+.subpage-action { display: inline-flex; margin-top: 20px; padding: 12px 16px; border-radius: 7px; background: #d71920; color: #fff; font-weight: 800; text-decoration: none; }
+.subpage-action:hover, .subpage-action:focus-visible { background: #a80f15; }
+.subpage-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.subpage-card { position: relative; display: grid; align-content: start; gap: 10px; min-height: 160px; padding: 18px; border: 1px solid #dedede; border-radius: 14px; background: #fff; }
+.subpage-card h2, .subpage-card p { margin: 0; }
+.subpage-card h2 { color: #171717; font-size: 19px; }
+.subpage-card p { color: #666; line-height: 1.5; }
+.subpage-mark { width: 28px; height: 4px; margin-top: auto; background: #d71920; }
+.back-link { color: #8f0d13; font-weight: 800; text-decoration: none; }
+.back-link:hover, .back-link:focus-visible { text-decoration: underline; }
+@media (max-width: 760px) { .subpage-grid { grid-template-columns: 1fr; } }

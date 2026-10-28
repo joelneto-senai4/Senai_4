@@ -1,0 +1,47 @@
+<app-hero-banner></app-hero-banner>
+
+<section class="featured-courses" aria-labelledby="featured-title">
+  <div class="section-heading section-heading-compact">
+    <div>
+      <span class="section-kicker">Formação profissional</span>
+      <h2 id="featured-title">Aprenda fazendo</h2>
+    </div>
+    <a routerLink="/cursos">Ver todos os cursos</a>
+  </div>
+  <div class="card-container">
+    <app-card-product
+      title="Automação Industrial"
+      category="Indústria 4.0"
+      description="Prepare-se para atuar com máquinas, processos e sistemas inteligentes."
+      image="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+    ></app-card-product>
+    <app-card-product
+      title="Soldagem Industrial"
+      category="Processos industriais"
+      description="Aprenda técnicas essenciais para transformar projetos em resultados."
+      image="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=600&q=80"
+    ></app-card-product>
+    <app-card-product
+      title="Processos de Fabricação"
+      category="Tecnologia e produção"
+      description="Domine etapas, ferramentas e boas práticas da produção industrial."
+      image="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=600&q=80"
+    ></app-card-product>
+  </div>
+</section>
+
+<section class="institutional-section compact-institutional" id="sobre" aria-labelledby="about-title">
+  <div class="section-heading">
+    <div><span class="section-kicker">SENAI</span><h2 id="about-title">Aprendizado que vira oportunidade.</h2></div>
+    <a routerLink="/sobre">Sobre o SENAI</a>
+  </div>
+  <p class="institutional-summary">Formação prática, tecnologia e conexão com a indústria para você avançar.</p>
+</section>
+
+<section class="agenda-section" id="agenda" aria-labelledby="agenda-title">
+  <div class="section-heading"><div><span class="section-kicker">Fique por dentro</span><h2 id="agenda-title">Próximos eventos</h2></div><a routerLink="/eventos">Ver agenda completa</a></div>
+  <div class="event-list">
+    <article class="event-item"><time datetime="2026-09-12"><strong>12</strong><span>SET</span></time><div><h3>Encontro com a indústria</h3><p>Auditório SENAI · 19:00</p></div><span class="event-status">Inscrições abertas</span></article>
+    <article class="event-item"><time datetime="2026-09-18"><strong>18</strong><span>SET</span></time><div><h3>Oficina de projetos</h3><p>Laboratório 02 · 14:00</p></div><span class="event-status">Vagas disponíveis</span></article>
+  </div>
+</section>

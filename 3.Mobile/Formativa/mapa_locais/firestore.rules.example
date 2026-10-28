@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Substituir somente na configuração final pela identidade de demonstração.
+    function autorizado() {
+      return request.auth != null && request.auth.uid in ['SUBSTITUIR_PELO_UID_AUTORIZADO'];
+    }
+    function valido(d) {
+      return d.keys().hasAll(['nome', 'categoria', 'cidade', 'avaliacao', 'distancia',
+          'horario', 'descricao', 'favorito', 'endereco', 'mapaX', 'mapaY'])
+        && d.keys().hasOnly(['nome', 'categoria', 'cidade', 'avaliacao', 'distancia',
+          'horario', 'descricao', 'favorito', 'endereco', 'mapaX', 'mapaY', 'avaliacoes'])
+        && (!('avaliacoes' in d) || (d.avaliacoes is int && d.avaliacoes >= 0))
+        && d.nome is string && d.nome.size() > 0
+        && d.categoria in ['Academia', 'Café', 'Restaurante', 'Parque', 'Cultura', 'Hospital']
+        && d.cidade in ['São Paulo', 'Campinas', 'Jundiaí']
+        && d.avaliacao is number && d.avaliacao >= 0 && d.avaliacao <= 5
+        && d.distancia is number && d.distancia >= 0 && d.distancia < 1000000
+        && d.horario is string && d.horario.size() > 0
+        && d.descricao is string && d.descricao.size() > 0
+        && d.favorito is bool && d.endereco is string
+        && d.mapaX is number && d.mapaX >= 0.08 && d.mapaX <= 0.92
+        && d.mapaY is number && d.mapaY >= 0.12 && d.mapaY <= 0.85;
+    }
+    match /locais/{id} {
+      allow read, delete: if autorizado();
+      allow create, update: if autorizado() && valido(request.resource.data);
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

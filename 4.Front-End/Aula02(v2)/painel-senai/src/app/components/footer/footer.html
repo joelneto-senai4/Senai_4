@@ -1,0 +1,40 @@
+<footer>
+	<div class="footer-content">
+		<section class="brand-block">
+			<img src="assets/images/logo-senai-top.png" alt="Logo SENAI" />
+			<p>Educação que transforma conhecimento em oportunidades.</p>
+		</section>
+
+		<section>
+			<h2>Senai</h2>
+			<a routerLink="/sobre">Sobre nós</a>
+			<a routerLink="/unidades">Nossas unidades</a>
+			<a routerLink="/contato">Central de ajuda</a>
+		</section>
+
+		<section>
+			<h2>Siga o SENAI</h2>
+			<div class="social-links">
+				@for (social of socialLinks; track social.label) {
+					<a href="#social" [attr.aria-label]="social.label">
+						<span class="social-icon" [innerHTML]="social.icon"></span>
+						<span>{{ social.label }}</span>
+					</a>
+				}
+			</div>
+		</section>
+
+		<section class="newsletter">
+			<h2>Assine nossa newsletter</h2>
+			<p>Receba novidades sobre cursos e oportunidades.</p>
+			<form>
+				<label for="email">Seu melhor e-mail</label>
+				<div class="email-field">
+					<input id="email" name="email" type="email" placeholder="voce@email.com" required />
+					<button type="submit">Assinar</button>
+				</div>
+			</form>
+		</section>
+	</div>
+	<div class="copyright">© 2026 SENAI. Todos os direitos reservados.</div>
+</footer>

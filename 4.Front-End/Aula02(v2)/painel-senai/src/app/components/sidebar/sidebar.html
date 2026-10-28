@@ -1,0 +1,10 @@
+<aside [class.collapsed]="!isOpen()">
+	<nav aria-label="Navegação principal">
+		@for (item of navigationItems; track item.label) {
+			<a [routerLink]="item.href">
+				<span class="nav-icon" [innerHTML]="item.icon"></span>
+				<span class="nav-label">{{ item.label }}</span>
+			</a>
+		}
+	</nav>
+</aside>

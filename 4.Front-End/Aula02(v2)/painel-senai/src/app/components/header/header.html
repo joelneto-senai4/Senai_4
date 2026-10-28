@@ -1,0 +1,73 @@
+<header>
+	<div class="brand">
+		<button
+			class="menu-button"
+			type="button"
+			aria-label="Abrir ou fechar menu"
+			[attr.aria-expanded]="sidebarOpen()"
+			(click)="toggleSidebar.emit()"
+		>
+			<span [innerHTML]="menuIcon"></span>
+		</button>
+		<img src="assets/images/logo-senai-top.png" alt="Logo SENAI" />
+		<strong>Painel SENAI</strong>
+	</div>
+
+	<nav aria-label="Navegação principal">
+		<a routerLink="/cursos">Cursos</a>
+		<a routerLink="/processo-seletivo">Processo Seletivo</a>
+		<a routerLink="/unidades">Unidades</a>
+		<a routerLink="/contato">Fale conosco</a>
+	</nav>
+
+	<div class="actions">
+		<button
+			class="icon-button"
+			type="button"
+			aria-label="Pesquisar"
+			[attr.aria-expanded]="searchOpen()"
+			(click)="toggleSearch()"
+		>
+			<span [innerHTML]="searchIcon"></span>
+		</button>
+		<button class="student-button" type="button" (click)="openStudentArea()">
+			<span [innerHTML]="userIcon"></span>
+			Sou Aluno
+		</button>
+	</div>
+</header>
+
+@if (searchOpen()) {
+	<div class="search-backdrop" (click)="closeSearch()">
+		<section
+			class="search-dialog"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Pesquisar no site"
+			(click)="$event.stopPropagation()"
+		>
+			<div class="search-field">
+				<span [innerHTML]="searchIcon"></span>
+				<input
+					type="search"
+					placeholder="Pesquisar..."
+					[value]="searchQuery()"
+					(input)="updateSearch($event)"
+					autofocus
+				/>
+				<button type="button" aria-label="Fechar busca" (click)="closeSearch()">×</button>
+			</div>
+			<p>Pesquisas sugeridas</p>
+			<div class="suggestions">
+				@for (suggestion of filteredSuggestions(); track suggestion) {
+					<button type="button" (click)="searchQuery.set(suggestion)">
+						<span class="suggestion-dot"></span>
+						{{ suggestion }}
+					</button>
+				} @empty {
+					<span class="empty-state">Nenhuma sugestão encontrada.</span>
+				}
+			</div>
+		</section>
+	</div>
+}

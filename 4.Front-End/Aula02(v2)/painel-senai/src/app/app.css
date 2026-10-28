@@ -1,0 +1,359 @@
+app-root {
+	display: block;
+	min-height: 100vh;
+	padding: 12px;
+	box-sizing: border-box;
+	background: #f3f6fa;
+	color: #1d1d1d;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.container { color: inherit; font-family: inherit; }
+
+.container {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	gap: 16px;
+	min-height: 0;
+	width: 100%;
+}
+
+.main-content {
+	display: grid;
+	grid-template-columns: 200px minmax(0, 1fr);
+	gap: 16px;
+	min-height: 0;
+	transition: grid-template-columns 280ms ease;
+	align-items: start;
+}
+
+.main-content > app-sidebar {
+	min-width: 0;
+}
+
+.main-content.sidebar-closed > app-sidebar {
+	min-width: 0;
+}
+
+.main-content.sidebar-closed {
+	grid-template-columns: 72px minmax(0, 1fr);
+}
+
+.main {
+	display: grid;
+	align-content: start;
+	gap: 22px;
+	padding: 18px;
+	margin-right: 28px;
+	border: 1px solid #dedede;
+	border-radius: 24px;
+	background: #fff;
+	box-shadow: none;
+	box-sizing: border-box;
+	min-width: 0;
+	min-height: 0;
+	height: auto;
+	align-self: start;
+	overflow-y: auto;
+}
+
+.main app-hero-banner,
+.card-container > app-card-product {
+	display: block;
+	height: auto;
+}
+
+.main app-hero-banner {
+	height: 220px;
+}
+
+.card-container {
+	min-height: 0;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.institutional-section,
+.recommendations-section,
+.agenda-section {
+	display: grid;
+	gap: 14px;
+	padding: 28px 4px 10px;
+	border-top: 1px solid #dedede;
+}
+
+.section-heading {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.section-kicker {
+	display: block;
+	margin-bottom: 4px;
+	color: #d71920;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.section-heading h2,
+.progress-card h3,
+.recommendation-card h3,
+.event-item h3,
+.event-item p {
+	margin: 0;
+}
+
+.section-heading h2 {
+	font-size: 21px;
+	font-weight: 700;
+}
+
+.section-heading > a,
+.text-link {
+	color: #1557a6;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.section-heading > a:hover,
+.section-heading > a:focus-visible,
+.text-link:hover,
+.text-link:focus-visible {
+	text-decoration: underline;
+}
+
+.institutional-intro {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 24px;
+	max-width: 900px;
+}
+
+.featured-courses { display: grid; gap: 16px; }
+.section-heading-compact { align-items: end; }
+.section-heading-compact > p { max-width: 360px; margin: 0; color: #666; font-size: 14px; line-height: 1.45; text-align: right; }
+
+.institutional-intro p {
+	margin: 0;
+	color: #4b4b4b;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.institutional-values {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.value-card {
+	display: flex;
+	align-items: start;
+	gap: 14px;
+	min-height: 120px;
+	padding: 16px;
+	border: 1px solid #d5d5d5;
+	border-radius: 10px;
+	background: #f7f7f7;
+}
+
+.value-number {
+	color: #1557a6;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.progress-card h3,
+.recommendation-card h3,
+.event-item h3 {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.progress-card p,
+.recommendation-card p,
+.event-item p {
+	margin: 5px 0 0;
+	color: #64748b;
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.recommendation-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.recommendation-card {
+	display: grid;
+	grid-template-columns: 150px minmax(0, 1fr);
+	gap: 16px;
+	padding: 10px;
+	border: 1px solid #d5d5d5;
+	border-radius: 10px;
+	background: #f7f7f7;
+}
+
+.recommendation-card img {
+	width: 150px;
+	height: 130px;
+	border-radius: 6px;
+	object-fit: cover;
+}
+
+.recommendation-card > div {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	gap: 7px;
+	padding: 5px 4px 5px 0;
+}
+
+.recommendation-card p {
+	margin: 0;
+}
+
+.tag {
+	padding: 4px 8px;
+	border-radius: 4px;
+	background: #e1edf9;
+	color: #1557a6;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.event-list {
+	display: grid;
+	gap: 8px;
+}
+
+.event-item {
+	display: grid;
+	grid-template-columns: 58px minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 14px;
+	padding: 12px;
+	border: 1px solid #d5d5d5;
+	border-radius: 10px;
+	background: #f7f7f7;
+}
+
+.event-item time {
+	display: grid;
+	place-items: center;
+	padding: 5px;
+	border-radius: 6px;
+	background: #e8e8e8;
+	color: #1557a6;
+}
+
+.event-item time strong {
+	font-size: 22px;
+}
+
+.event-item time span {
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.event-status {
+	padding: 5px 8px;
+	border-radius: 4px;
+	background: #e7f4ea;
+	color: #236b36;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+@media (max-width: 900px) {
+	.progress-grid,
+	.recommendation-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.progress-card-highlight,
+	.recommendation-grid .recommendation-card:first-child {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 620px) {
+	.main {
+		padding: 8px;
+		margin-right: 0;
+	}
+
+	.main > app-hero-banner {
+		height: 190px;
+	}
+
+	.card-container,
+	.institutional-values,
+	.recommendation-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.institutional-intro {
+		grid-template-columns: 1fr;
+	}
+
+	.progress-card-highlight,
+	.recommendation-grid .recommendation-card:first-child {
+		grid-column: auto;
+	}
+
+	.recommendation-card {
+		grid-template-columns: 110px minmax(0, 1fr);
+	}
+
+	.recommendation-card img {
+		width: 110px;
+		height: 120px;
+	}
+
+	.event-item {
+		grid-template-columns: 52px minmax(0, 1fr);
+	}
+
+	.event-status {
+		grid-column: 2;
+		justify-self: start;
+	}
+}
+
+@supports not (grid-template-columns: subgrid) {
+	.card-container > app-card-product {
+		min-width: 0;
+	}
+}
+
+/* Camada visual do sistema: superfícies leves, cantos consistentes e estados claros. */
+.main > app-hero-banner { height: 250px; }
+.section-heading h2 { color: #171717; font-size: 26px; letter-spacing: -.03em; font-weight: 800; }
+.section-heading > a, .text-link { color: #d71920; font-weight: 800; }
+.value-card, .recommendation-card, .event-item { border-color: #dedede; border-radius: 16px; background: #fff; box-shadow: none; transition: transform 180ms ease, border-color 180ms ease; }
+.value-card, .recommendation-card, .event-item { box-shadow: none; }
+.value-card:hover, .recommendation-card:hover, .event-item:hover { transform: translateY(-2px); border-color: #d71920; box-shadow: none; }
+
+/* Contraste final: vermelho recebe texto branco; textos auxiliares usam cinza escuro. */
+.main .section-heading > a, .main .text-link, .main .section-kicker, .main .value-number { color: #b20f16; }
+.main .tag { background: #fbeaec; color: #8f0d13; }
+.main .event-status { background: #ededed; color: #333; }
+.main .event-item time { color: #b20f16; }
+.main svg.link-icon { width: 16px !important; height: 16px !important; display: inline-block; flex: 0 0 16px; }
+.main .text-link { display: inline-flex; align-items: center; gap: 6px; }
+.compact-institutional { gap: 12px; }
+.institutional-summary { margin: 0; color: #666; font-size: 16px; }
+.recommendation-card img { border-radius: 10px; }
+.tag, .event-status { border-radius: 999px; }
+@media (max-width: 620px) { .main { padding: 12px; margin-right: 0; } .main > app-hero-banner { height: 190px; } }
+@media (max-width: 620px) { .section-heading-compact { align-items: start; flex-direction: column; } .section-heading-compact > p { max-width: none; text-align: left; } }

@@ -1,0 +1,27 @@
+<section>
+	@for (slide of slides; track slide.title; let index = $index) {
+		<div class="slide" [class.active]="activeSlide() === index">
+			<img [src]="slide.image" [alt]="slide.alt" />
+			<div class="slide-content">
+				<p>{{ slide.title }}</p>
+				<span>{{ slide.description }}</span>
+				<div class="hero-actions">
+					<a class="hero-primary" href="#cursos">Encontrar um curso</a>
+					<a class="hero-secondary" href="#sobre">Conheça o SENAI</a>
+				</div>
+			</div>
+		</div>
+	}
+
+	<div class="dots" aria-label="Seleção de slides">
+		@for (slide of slides; track slide.title; let index = $index) {
+			<button
+				type="button"
+				[class.active]="activeSlide() === index"
+				[attr.aria-label]="'Mostrar slide ' + (index + 1)"
+				[attr.aria-current]="activeSlide() === index ? 'true' : null"
+				(click)="selectSlide(index)"
+			></button>
+		}
+	</div>
+</section>

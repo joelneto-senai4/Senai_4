@@ -1,0 +1,7 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { "name": "Perto - modo local", "request": "launch", "type": "dart", "program": "lib/main.dart" },
+    { "name": "Perto - Firebase (configurar por último)", "request": "launch", "type": "dart", "program": "lib/main_firebase.dart" }
+  ]
+}

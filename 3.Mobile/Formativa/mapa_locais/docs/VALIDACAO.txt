@@ -1,0 +1,26 @@
+VALIDAÇÃO FINAL - REVISÃO DO WIREFRAME
+Data: 28/10/2026
+Flutter 3.47.6 / Dart 3.13.5
+
+Interface: três telas refeitas conforme a referência cinza enviada pelo usuário.
+Navegação inferior: Mapa / Favoritos / Perfil em todas as telas.
+Favicon: fundo preto em SVG, PNG 32, 192 e 512; metadados e URLs versionadas atualizados.
+
+flutter analyze: No issues found.
+flutter test: 20 testes aprovados.
+Responsividade: 320x568, 320x640, 360x800, 390x844, 430x932, 768x1024, 844x390 e 1366x900.
+Inclui mapa, cinco marcadores, resultados, detalhes, perfil, seleção de cidade e galeria.
+CRUD pela interface, cancelamento/confirmação de exclusão, exclusão a partir dos detalhes, favoritos, pesquisa e erro também verificados.
+Migração dos exemplos preserva edições, favoritos, exclusões e cópia anterior: aprovada.
+
+flutter build web --release --no-wasm-dry-run: aprovado.
+flutter build apk --debug --target-platform android-arm64: aprovado.
+Chrome/Playwright: três telas renderizadas, favorito persistido e recuperado após reload, sem pageerrors.
+Prévia aberta no navegador do usuário atualizada e conferida visualmente.
+Capturas reais em docs/capturas, viewport 390x860, escala 2.
+
+APK: ../Perto-debug.apk
+SHA256: 0875419749D07D36BE35BBACCDCC5C627310D96077334776F21CDC61253D60E3
+
+PENDENTE: teste físico no Android e integração/configuração Firebase. Nenhum serviço, regra ou dado remoto foi alterado. O Firebase permanece para a próxima etapa.
+O mapa é ilustrativo e as fotos reproduzem os placeholders do wireframe.
